@@ -11,7 +11,7 @@ namespace WorldData.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
-        List<Data> allDatas = new List<Data> {};
+        List<Data> allDatas = Data.GetAll();
         return View("Index", allDatas);
       }
 

@@ -7,13 +7,14 @@ namespace WorldData.Models
 {
   public class Data
   {
-    private int _id;
+    //private int _id;
     private string _city;
+    private string _country;
     private string _countrylanguage;
 
-    public Data(int Id, string city, string countryLanguage)
+    public Data(string country, string city, string countryLanguage)
     {
-      _id = Id;
+      _country = country;
       _city = city;
       _countrylanguage = countryLanguage;
     }
@@ -25,9 +26,9 @@ namespace WorldData.Models
     {
       return _city;
     }
-    public int GetId()
+    public string GetCountry()
     {
-      return _id;
+      return _country;
     }
     public static List<Data> GetAll()
       {
@@ -35,14 +36,14 @@ namespace WorldData.Models
         MySqlConnection conn = DB.Connection();
         conn.Open();
         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-        cmd.CommandText = @"SELECT * FROM city;";
+        cmd.CommandText = @"SELECT * FROM city, countrylanguage, country;";
         MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
         while(rdr.Read())
         {
-          int dataCountry = rdr.GetInt32(1);
-          string dataCity = rdr.GetString(0);
-          string dataCountrycode= rdr.GetString(2);
-          Data newData = new Data(dataCountry, dataCity, dataCountrycode);
+          string Country = rdr.GetString(2);
+          string City = rdr.GetString(1);
+          string CountryLanguage = rdr.GetString(1);
+          Data newData = new Data(Country, City, CountryLanguage);
           allDatas.Add(newData);
         }
         conn.Close();
