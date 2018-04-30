@@ -11,8 +11,14 @@ namespace WorldData.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
-        List<Data> allDatas = Data.GetAll();
-        return View("Index", allDatas);
+        return View();
+      }
+
+      [HttpGet("/cities")]
+      public ActionResult CitiesList()
+      {
+        List<City> listOfAllCities = City.GetAll();
+        return View("Cities", listOfAllCities);
       }
 
 
