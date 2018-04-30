@@ -1,0 +1,19 @@
+.middle{
+  text-align: center;
+}
+
+.lan{
+  text-align: center;
+}
+
+.country{
+  text-align: center;
+}
+
+.countries{
+  text-align: center;
+  background-color: lightblue;
+}
+.row{
+  border: 5px solid white;
+}

@@ -1,5 +1,9 @@
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+<div class="lan">
 <h1>Country Languages</h1>
 @foreach(var language in Model)
 {
   <p>  Code: @language.GetCode() -- Language: @language.GetLanguage() -- Percentage: @language.GetPercentage()</p>
 }
+</div>

@@ -1,5 +1,12 @@
-<h1>Hello</h1>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+
+<body>
+<div class="country">
+  <h1>Cities</h1>
 @foreach (var city in Model)
 {
   <p>  Name: @city.GetName() -- City Code: @city.GetCode() --District: @city.GetDistrict()</p>
 }
+</div>
+</body>
