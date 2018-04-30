@@ -1,0 +1,5 @@
+<h1>Country Languages</h1>
+@foreach(var language in Model)
+{
+  <p>  Code: @language.GetCode() -- Language: @language.GetLanguage() -- Percentage: @language.GetPercentage()</p>
+}

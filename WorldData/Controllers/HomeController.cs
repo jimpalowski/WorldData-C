@@ -21,6 +21,18 @@ namespace WorldData.Controllers
         return View("Cities", listOfAllCities);
       }
 
+      [HttpGet("/countries")]
+      public ActionResult CountriesList()
+      {
+        List<Country> listOfAllCountries = Country.GetAll();
+        return View("Countries", listOfAllCountries);
+      }
 
+      [HttpGet("/languages")]
+      public ActionResult LanguagesList()
+      {
+        List<CountryLanguage> listOfAllLanguages = CountryLanguage.GetAll();
+        return View("Languages", listOfAllLanguages);
+      }
     }
 }
