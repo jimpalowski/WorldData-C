@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
-//using WorldData.Models;
+using WorldData.Models;
 
 namespace WorldData.Controllers
 {
@@ -11,7 +11,8 @@ namespace WorldData.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
-        return View();
+        List<Data> allDatas = new List<Data> {};
+        return View("Index", allDatas);
       }
 
 

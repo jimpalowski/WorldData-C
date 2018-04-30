@@ -1,24 +1,56 @@
-//using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
+//using WorldData;
 using System;
 
 namespace WorldData.Models
 {
   public class Data
   {
-    private int _number;
+    private int _id;
+    private string _city;
+    private string _countrylanguage;
 
-    public Data(int number)
+    public Data(int Id, string city, string countryLanguage)
     {
-      _number = number;
+      _id = Id;
+      _city = city;
+      _countrylanguage = countryLanguage;
     }
-    public int GetNumber()
+    public string GetCountryLanguage()
     {
-      return _number;
+      return _countrylanguage;
     }
-    public void SetNumber(int newNumber)
+    public string GetCity()
     {
-      _number = newNumber;
+      return _city;
+    }
+    public int GetId()
+    {
+      return _id;
+    }
+    public static List<Data> GetAll()
+      {
+        List<Data> allDatas = new List<Data> {};
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM city;";
+        MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+        while(rdr.Read())
+        {
+          int dataCountry = rdr.GetInt32(1);
+          string dataCity = rdr.GetString(0);
+          string dataCountrycode= rdr.GetString(2);
+          Data newData = new Data(dataCountry, dataCity, dataCountrycode);
+          allDatas.Add(newData);
+        }
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+        return allDatas;
     }
   }
 }
